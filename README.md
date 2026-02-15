@@ -3,6 +3,8 @@
 基于 SiliconFlow `/v1/audio/transcriptions` 接口的语音转文字（STT）脚本示例，可作为 OpenClaw skill 使用或独立命令行工具使用。
 
 > 本仓库为示例实现，使用者可按需调整脚本细节、目录结构与环境变量配置。
+>
+> English version: see [README.en.md](README.en.md).
 
 ## 功能简介
 
@@ -43,6 +45,14 @@ siliconflow-audio-transcribe/
    set +a
    ```
 
+## 额外说明：SiliconFlow 推广链接
+
+如果你是第一次使用 SiliconFlow，可以通过以下链接注册，每人都可以获取 16 元额度（可用来体验除免费模型之外的其他模型）：
+
+- 推荐链接：https://cloud.siliconflow.cn/i/QcpkcG5j
+
+> 说明：这是作者使用的推广链接，不影响你正常使用免费模型，只是多拿一份初始额度。
+
 ## 命令行用法
 
 ```bash
@@ -62,56 +72,3 @@ scripts/transcribe_audio.sh ./meeting.wav FunAudioLLM/SenseVoiceSmall
 
 - 成功：stdout 输出转写文本，退出码为 `0`
 - 失败：输出错误信息，退出码为非 `0`
-
-## English
-
-This is an example **Speech-to-Text (STT)** tool using SiliconFlow's `/v1/audio/transcriptions` endpoint. It can be used as an OpenClaw skill or as a standalone CLI helper.
-
-> This repo is an example implementation. Users are expected to adjust scripts, paths and environment variable setup according to their own environment.
-
-### Features
-
-- Model: `FunAudioLLM/SenseVoiceSmall`
-- Purpose: Transcribe local audio files into text via SiliconFlow API
-
-### Directory
-
-```bash
-siliconflow-audio-transcribe/
-├── SKILL.md
-└── scripts/
-    └── transcribe_audio.sh
-```
-
-### Setup
-
-1. Create an API key in SiliconFlow console.
-2. Set `SILICONFLOW_API_KEY` on your machine, for example:
-
-   ```bash
-   mkdir -p ~/.config/openclaw/secrets
-   chmod 700 ~/.config/openclaw/secrets
-
-   cat > ~/.config/openclaw/secrets/siliconflow.env <<'EOF'
-   SILICONFLOW_API_KEY=your_api_key_here
-   EOF
-
-   chmod 600 ~/.config/openclaw/secrets/siliconflow.env
-   ```
-
-3. Load it before running scripts:
-
-   ```bash
-   set -a
-   . ~/.config/openclaw/secrets/siliconflow.env
-   set +a
-   ```
-
-### Usage
-
-```bash
-cd siliconflow-audio-transcribe
-scripts/transcribe_audio.sh <audio_file> [model]
-```
-
-On success, the script prints plain text and exits with code `0`. On failure, it prints error details and exits with non-zero code.
