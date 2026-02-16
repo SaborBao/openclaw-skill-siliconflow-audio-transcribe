@@ -1,4 +1,0 @@
-interface:
-  display_name: "SiliconFlow Transcribe"
-  short_description: "Transcribe audio via SiliconFlow SenseVoice API"
-  default_prompt: "Use this skill to transcribe an audio file with SiliconFlow API and return text or API error details."
