@@ -14,8 +14,8 @@ audio_file="$1"
 model="${2:-FunAudioLLM/SenseVoiceSmall}"
 endpoint="https://api.siliconflow.cn/v1/audio/transcriptions"
 
-if [[ -z "${SILICONFLOW_API_KEY:-}" ]]; then
-  echo "SILICONFLOW_API_KEY is required." >&2
+if [[ -z "${OPENCLAW_SILICONFLOW_API_KEY:-}" ]]; then
+  echo "OPENCLAW_SILICONFLOW_API_KEY is required." >&2
   exit 2
 fi
 
@@ -35,7 +35,7 @@ http_status="$(
     -o "$tmp_body" \
     -w "%{http_code}" \
     --request POST "$endpoint" \
-    -H "Authorization: Bearer $SILICONFLOW_API_KEY" \
+    -H "Authorization: Bearer $OPENCLAW_SILICONFLOW_API_KEY" \
     -F "file=@$audio_file" \
     -F "model=$model"
 )"
